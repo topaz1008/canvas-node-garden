@@ -1,13 +1,16 @@
 HTML5 Canvas Node Garden
 ==========================
 
+A live demo can be found [here](https://topaz1008.github.io/canvas-node-garden/).
+A demo for testing `ObjectGrid` performance can be seen [here](https://topaz1008.github.io/canvas-node-garden/gridtest.html).
+
 The demo uses a uniform grid for space partitioning in order to do a faster neighbour lookup (basically collision detection) with a lot of objects.
 
 We basically just draw a line between two particles if they are within a certain distance from each other.
 
 Particles also have a simple spring acceleration towards one another, which can make for some complex looking shapes.
 
-The grid algorithm and basic idea is presented in [AdvancED ActionScript Animation](http://www.amazon.com/AdvancED-ActionScript-Animation-Friends-Learning/dp/1430216085) by Keith Peters.
+The grid algorithm and basic idea is presented in [AdvancED ActionScript Animation](https://www.amazon.com/AdvancED-ActionScript-Animation-Friends-Learning/dp/1430216085) by Keith Peters.
 
 We use a uniform grid with the cell size being as large as our largest object in the scene, then we only need to check each cell and its surrounding neighbours for possible collisions,
 and not loop through all objects and check all of them.

@@ -74,8 +74,6 @@ function checkCollision(ball0, ball1) {
 }
 
 function update() {
-    const length = balls.length;
-
     context.clearRect(0, 0, VIEW_WIDTH, VIEW_HEIGHT);
 
     objectsGrid.drawGrid(context, 'black');
@@ -92,7 +90,7 @@ function update() {
     }
 
     const detectionTime = (Date.now() - lastTime);
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < balls.length; i++) {
         context.fillStyle = balls[i].color;
         context.beginPath();
         balls[i].draw(context);
@@ -120,13 +118,10 @@ function basicCheck() {
     // Trivial collision detection algorithm
     // Just check all possible pairs
     // complexity O((n^2 - n)/2)
-    const length = balls.length;
-    let ball0, ball1;
-
-    for (let i = 0; i < (length - 1); ++i) {
-        ball0 = balls[i];
+    for (let i = 0; i < (balls.length - 1); ++i) {
+        const ball0 = balls[i];
         for (let j = (i + 1); j < length; ++j) {
-            ball1 = balls[j];
+            const ball1 = balls[j];
             checkCollision(ball0, ball1);
         }
     }

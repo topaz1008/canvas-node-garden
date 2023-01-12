@@ -62,19 +62,16 @@ export class ObjectsGrid {
      * @public
      */
     check(objects) {
-        let index, fX, fY,
-            numOfObjects = objects.length;
-
         this.grid = new Array(this.numOfCells);
         this.checks = [];
 
-        for (let i = 0; i < numOfObjects; ++i) {
+        for (let i = 0; i < objects.length; ++i) {
             const obj = objects[i];
 
             // Index (y * numCols + x)
-            fX = obj.x / this.blockSize;
-            fY = obj.y / this.blockSize;
-            index = (fY | fY) * this.numOfColumns + (fX | fX);
+            const fX = obj.x / this.blockSize;
+            const fY = obj.y / this.blockSize;
+            let index = (fY | fY) * this.numOfColumns + (fX | fX);
 
             if (index < 0) {
                 index = 0;
@@ -118,8 +115,6 @@ export class ObjectsGrid {
      * @private
      */
     checkOneCell(x, y) {
-        let i, j, obj0, obj1;
-
         // Get cell
         let index = y * this.numOfColumns + x,
             cell = this.grid[index];
@@ -127,10 +122,10 @@ export class ObjectsGrid {
 
         // Mark all pairs
         let length = cell.length;
-        for (i = 0; i < (length - 1); ++i) {
-            obj0 = cell[i];
-            for (j = (i + 1); j < length; ++j) {
-                obj1 = cell[j];
+        for (let i = 0; i < (length - 1); ++i) {
+            const obj0 = cell[i];
+            for (let j = (i + 1); j < length; ++j) {
+                const obj1 = cell[j];
                 this.checks.push(obj0, obj1);
             }
         }
@@ -146,8 +141,6 @@ export class ObjectsGrid {
      * @private
      */
     checkTwoCells(x0, y0, x1, y1) {
-        let i, j, obj0, obj1;
-
         // Make sure we're in bounds
         if (x1 < 0 || x1 >= this.numOfColumns || y1 < 0 || y1 >= this.numOfRows) return;
 
@@ -162,10 +155,10 @@ export class ObjectsGrid {
             length1 = cell1.length;
 
         // Mark all pairs
-        for (i = 0; i < length0; ++i) {
-            obj0 = cell0[i];
-            for (j = 0; j < length1; ++j) {
-                obj1 = cell1[j];
+        for (let i = 0; i < length0; ++i) {
+            const obj0 = cell0[i];
+            for (let j = 0; j < length1; ++j) {
+                const obj1 = cell1[j];
                 this.checks.push(obj0, obj1);
             }
         }

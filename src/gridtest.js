@@ -118,7 +118,8 @@ function basicCheck() {
     // Trivial collision detection algorithm
     // Just check all possible pairs
     // complexity O((n^2 - n)/2)
-    for (let i = 0; i < (balls.length - 1); ++i) {
+    const length = balls.length;
+    for (let i = 0; i < (length - 1); ++i) {
         const ball0 = balls[i];
         for (let j = (i + 1); j < length; ++j) {
             const ball1 = balls[j];

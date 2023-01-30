@@ -11,10 +11,10 @@ import { Particle } from './particle.js';
 const VIEW_WIDTH = 1280,
     VIEW_HEIGHT = 720,
     NUM_PARTICLES = 250,
-    SPRING_AMOUNT_MIN = 0.3,
-    SPRING_AMOUNT_MAX = 1,
-    MAX_SPEED = 150,
-    MIN_DISTANCE = 200;
+    SPRING_AMOUNT_MIN = 1,
+    SPRING_AMOUNT_MAX = 2,
+    MAX_SPEED = 1000,
+    MIN_DISTANCE = 150;
 
 // Globals
 const canvas = document.getElementById('main-canvas'),

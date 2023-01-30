@@ -1,26 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grid collision detection test</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Grid collision detection performance test</title>
     <style>
-        body { background: #cecece; }
-        #main { border: 2px solid #000; background: #808080; margin: auto; display: block; }
+        canvas {
+            background-color: rgb(128, 128, 128);
+        }
     </style>
 </head>
 <body>
 
-<div>
-    <label>
-        Method: <button id="btn-toggle">Grid Based</button>
-    </label>
-    <button id="btn-add-balls">Add 100 Balls</button>
-</div>
+<header>
+    <h2>Demo app for testing ObjectGrid performance</h2>
+    <details open>
+        <summary>About</summary>
+        <p>We use a uniform grid with the cell size being as large as our largest object in the scene, then we only need
+            to check each cell and its surrounding neighbours for possible collisions,
+            and not loop through all objects and check all of them.</p>
+        <p>It does have a lot of overhead of keeping track of all the objects in the scene, but by balancing the choice
+            of cell size, and the number of objects in the scene, we can usually get a few times faster than the naive
+            O(n<sup>2</sup>) algorithm.</p>
+        <p>This app is comparing the performance of the trivial method against the grid based method.</p>
+        <p>If 2 balls collide we color them red, if not, they're black. This method can be used for collision detection
+            and for a fast neighbour lookup.</p>
+        <p>We use this to create the <a href="https://topaz1008.github.io/canvas-node-garden/" target="_blank">node-garden
+            effect</a>.</p>
+    </details>
+    <details>
+        <summary>Source Code</summary>
+        <p>Can be found on my <a href="https://github.com/topaz1008/canvas-node-garden/blob/master/src/gridtest.js"
+                                 target="_blank">GitHub</a>.
+        </p>
+    </details>
+    <details>
+        <summary>Credits</summary>
+        <p>The grid algorithm and basic idea is presented in <a
+                href="https://www.amazon.com/AdvancED-ActionScript-Animation-Friends-Learning/dp/1430216085"
+                target="_blank">AdvancED ActionScript Animation</a> by Keith Peters.</p>
+    </details>
+</header>
 
-<canvas id="main"></canvas>
+<main id="main-container" class="">
+    <div>
+        <label>
+            Change collision detection method:
+            <button id="btn-toggle">Grid Based</button>
+        </label>
+        <button id="btn-add-balls">Add 100 Balls</button>
+    </div>
+    <div id="canvas-container">
+        <canvas id="main-canvas"></canvas>
+    </div>
+
+</main>
 
 <script src="src/gridtest.js" type="module"></script>
+
 </body>
 </html>

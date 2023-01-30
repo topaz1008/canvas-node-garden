@@ -1,0 +1,33 @@
+:root {
+    --max-width: 1280px;
+    --border-color: rgb(255, 255, 255);
+    --border-thickness: 2px;
+}
+
+body {
+    max-width: var(--max-width);
+    margin: auto;
+}
+
+#main-canvas {
+    margin: auto;
+    width: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+#main-container {
+    padding-top: 0;
+}
+
+header {
+    padding-bottom: 0 !important;
+}
+
+label > button {
+    margin-top: 10px;
+}
+
+p {
+    margin-bottom: 20px
+}

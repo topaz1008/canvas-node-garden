@@ -1,18 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML5 Canvas Node Garden Effect</title>
-    <style>
-        body { background: #000; }
-        #main { background: #000; margin: auto; display: block; }
-    </style>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+
+    <title>Node Garden Effect</title>
 </head>
 <body>
 
-<canvas id="main"></canvas>
+<header>
+    <h2>Node Garden Effect</h2>
+    <details open>
+        <summary>About</summary>
+        <p>We basically just draw a line between two particles if they are within a certain distance from each
+            other.</p>
+        <p>Particles also have a simple spring acceleration towards one another, which can make for some complex looking
+            shapes.</p>
+        <p>This demo uses a uniform grid for space partitioning in order to do a faster neighbour lookup (basically collision detection) with a lot of objects.</p>
+        <p>A demo app for comparing the performance of the naive collision detection method against the grid based one can be seen
+            <a href="https://topaz1008.github.io/canvas-node-garden/gridtest.html" target="_blank">HERE</a>.</p>
+    </details>
+    <details>
+        <summary>Source Code</summary>
+        <p>Can be found on my <a href="https://github.com/topaz1008/canvas-node-garden//" target="_blank">GitHub</a>.
+        </p>
+    </details>
+    <details>
+        <summary>Credits</summary>
+        <p>The grid algorithm and basic idea is presented in <a
+                href="https://www.amazon.com/AdvancED-ActionScript-Animation-Friends-Learning/dp/1430216085"
+                target="_blank">AdvancED ActionScript Animation</a> by Keith Peters.</p>
+    </details>
+</header>
+
+<main id="main-container" class="">
+
+    <div id="canvas-container">
+        <canvas id="main-canvas"></canvas>
+    </div>
+
+</main>
 
 <script src="src/main.js" type="module"></script>
 </body>

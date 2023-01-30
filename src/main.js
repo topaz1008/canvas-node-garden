@@ -10,15 +10,14 @@ import { Particle } from './particle.js';
 // CVars
 const VIEW_WIDTH = 1280,
     VIEW_HEIGHT = 720,
-    FPS = 30,
     NUM_PARTICLES = 250,
     SPRING_AMOUNT_MIN = 0.3,
     SPRING_AMOUNT_MAX = 1,
-    MAX_SPEED = 1000,
+    MAX_SPEED = 150,
     MIN_DISTANCE = 200;
 
 // Globals
-const canvas = document.getElementById('main'),
+const canvas = document.getElementById('main-canvas'),
     context = canvas.getContext('2d'),
     objectsGrid = new ObjectsGrid(VIEW_WIDTH, VIEW_HEIGHT, MIN_DISTANCE),
     particles = [];
@@ -37,7 +36,7 @@ canvas.addEventListener('click', (e) => {}, false);
 
 // Init
 addParticles(NUM_PARTICLES);
-setInterval(update, 1000 / FPS);
+update();
 
 /**
  * Add particles
@@ -89,6 +88,7 @@ function update() {
                 context.beginPath();
                 context.moveTo(p0.x, p0.y);
                 context.lineTo(p1.x, p1.y);
+                context.closePath();
                 context.stroke();
             }
 
@@ -121,6 +121,7 @@ function update() {
     context.fill();
 
     lastTime = Date.now();
+    requestAnimationFrame(update);
 }
 
 /**

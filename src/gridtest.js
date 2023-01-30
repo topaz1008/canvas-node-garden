@@ -8,10 +8,9 @@ import { Particle } from './particle.js';
 
 const VIEW_WIDTH = 1024,
     VIEW_HEIGHT = 768,
-    FPS = 60,
     MIN_DISTANCE = 20;
 
-const canvas = document.getElementById('main'),
+const canvas = document.getElementById('main-canvas'),
     context = canvas.getContext('2d'),
     balls = [],
     objectsGrid = new ObjectsGrid(VIEW_WIDTH, VIEW_HEIGHT, MIN_DISTANCE);
@@ -22,7 +21,7 @@ let numberOfBalls = 0,
 
 canvas.width = VIEW_WIDTH;
 canvas.height = VIEW_HEIGHT;
-context.font = 'bold 16px Arial';
+context.font = 'bold 20px Arial';
 
 document.getElementById('btn-toggle')
     .addEventListener('click', (e) => {
@@ -46,11 +45,12 @@ document.getElementById('btn-add-balls')
 }, false);
 
 addBalls(1000);
-setInterval(update, 1000 / FPS);
+update();
 
 function addBalls(count) {
     for (let i = 0; i < count; i++) {
-        const ball = new Particle(getRandom(10, VIEW_WIDTH), getRandom(10, VIEW_HEIGHT), getRandom(5, 10), 'black');
+        const radius = getRandom(5, 10);
+        const ball = new Particle(getRandom(10, VIEW_WIDTH), getRandom(10, VIEW_HEIGHT), radius);
         ball.vx = getRandom(-0.25, 0.25);
         ball.vy = getRandom(-0.25, 0.25);
 
@@ -102,12 +102,12 @@ function update() {
         if (balls[i].color !== 'black') balls[i].color = 'black';
     }
 
-    context.fillStyle = 'white';
-    const info = 'Number of balls: ' + numberOfBalls +
-        ' | Number of checks: ' + numberOfChecks +
-        ' | Detection Time: ' + detectionTime + 'ms';
-    context.fillText(info, 5, 20);
+    context.fillStyle = 'rgb(255, 255, 255)';
+    const info = `Number of balls: ${numberOfBalls} | Number of checks: ${numberOfChecks} | Detection Time: ${detectionTime}ms`;
+    context.fillText(info, 5, 25);
     numberOfChecks = 0;
+
+    requestAnimationFrame(update);
 }
 
 function getRandom(min, max) {

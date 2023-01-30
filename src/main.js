@@ -13,7 +13,7 @@ const VIEW_WIDTH = 1280,
     NUM_PARTICLES = 250,
     SPRING_AMOUNT_MIN = 1,
     SPRING_AMOUNT_MAX = 2,
-    MAX_SPEED = 1000,
+    MAX_SPEED = 100,
     MIN_DISTANCE = 150;
 
 // Globals

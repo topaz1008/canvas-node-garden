@@ -98,11 +98,11 @@ export class ObjectsGrid {
         // |_|_|_|_|
         for (let i = 0; i < this.numOfColumns; ++i) {
             for (let j = 0; j < this.numOfRows; ++j) {
-                this.checkOneCell(i, j);
-                this.checkTwoCells(i, j, i + 1, j);     // The cell to the right
-                this.checkTwoCells(i, j, i - 1, j + 1); // The cell below to the left
-                this.checkTwoCells(i, j, i, j + 1);     // The cell directly below
-                this.checkTwoCells(i, j, i + 1, j + 1); // The cell below to the right
+                this.#checkOneCell(i, j);
+                this.#checkTwoCells(i, j, i + 1, j);     // The cell to the right
+                this.#checkTwoCells(i, j, i - 1, j + 1); // The cell below to the left
+                this.#checkTwoCells(i, j, i, j + 1);     // The cell directly below
+                this.#checkTwoCells(i, j, i + 1, j + 1); // The cell below to the right
             }
         }
     }
@@ -114,7 +114,7 @@ export class ObjectsGrid {
      * @param y {Number}
      * @private
      */
-    checkOneCell(x, y) {
+    #checkOneCell(x, y) {
         // Get cell
         let index = y * this.numOfColumns + x,
             cell = this.grid[index];
@@ -140,7 +140,7 @@ export class ObjectsGrid {
      * @param y1 {Number}
      * @private
      */
-    checkTwoCells(x0, y0, x1, y1) {
+    #checkTwoCells(x0, y0, x1, y1) {
         // Make sure we're in bounds
         if (x1 < 0 || x1 >= this.numOfColumns || y1 < 0 || y1 >= this.numOfRows) return;
 

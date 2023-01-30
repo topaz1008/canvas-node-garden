@@ -12,7 +12,7 @@ const VIEW_WIDTH = 1280,
     VIEW_HEIGHT = 720,
     NUM_PARTICLES = 250,
     SPRING_AMOUNT_MIN = 2,
-    SPRING_AMOUNT_MAX = 3,
+    SPRING_AMOUNT_MAX = 4,
     MAX_SPEED = 300,
     MIN_DISTANCE = 150;
 
@@ -36,7 +36,7 @@ canvas.addEventListener('click', (e) => {}, false);
 
 // Init
 addParticles(NUM_PARTICLES);
-update();
+setInterval(update, 1000 / 30)
 
 /**
  * Add particles
@@ -121,7 +121,6 @@ function update() {
     context.fill();
 
     lastTime = Date.now();
-    requestAnimationFrame(update);
 }
 
 /**

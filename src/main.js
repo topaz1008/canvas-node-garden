@@ -11,9 +11,9 @@ import { Particle } from './particle.js';
 const VIEW_WIDTH = 1280,
     VIEW_HEIGHT = 720,
     NUM_PARTICLES = 250,
-    SPRING_AMOUNT_MIN = 1,
-    SPRING_AMOUNT_MAX = 2,
-    MAX_SPEED = 100,
+    SPRING_AMOUNT_MIN = 2,
+    SPRING_AMOUNT_MAX = 3,
+    MAX_SPEED = 300,
     MIN_DISTANCE = 150;
 
 // Globals
